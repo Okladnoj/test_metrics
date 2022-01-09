@@ -1,0 +1,6 @@
+package com.test.metrics
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

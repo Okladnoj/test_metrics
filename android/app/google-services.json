@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "627327453857",
+    "project_id": "test-metric-profitrol",
+    "storage_bucket": "test-metric-profitrol.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627327453857:android:aa69f592fa86fd74b13ee0",
+        "android_client_info": {
+          "package_name": "com.test.metrics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627327453857-6su8jh10s5l9t4i00u8vp25gnef3g3eh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAva-x1tva7ljBdZFSsICOBmaCN5SawGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627327453857-6su8jh10s5l9t4i00u8vp25gnef3g3eh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
