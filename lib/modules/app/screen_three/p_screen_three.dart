@@ -1,8 +1,9 @@
+import 'dart:math';
+
 import 'package:test_metrics/services/settings.dart';
 
 import 'i_screen_three.dart';
 import 'models/screen_three_model_ui.dart';
-import 'widgets/w_screen_three_title.dart';
 
 class ScreenThreeP extends StatefulWidget {
   static const id = 'ScreenThreeP';
@@ -14,6 +15,7 @@ class ScreenThreeP extends StatefulWidget {
 
 class ScreenThreePState extends State<ScreenThreeP> with ErrorHandlerState {
   ScreenThreeModelUI? _modelUI;
+  final _r = Random();
   late final ScreenThreeInteractor _interactor;
 
   @override
@@ -37,10 +39,7 @@ class ScreenThreePState extends State<ScreenThreeP> with ErrorHandlerState {
         return ScreenFormer(
           streamLoadingStatus: _interactor.observerLoading,
           titleActions: _buildTitle(),
-          children: [
-            _buildContent(),
-            ScreenThreeW(interactor: _interactor),
-          ],
+          child: _buildContent(),
         );
       },
     );
@@ -53,8 +52,30 @@ class ScreenThreePState extends State<ScreenThreeP> with ErrorHandlerState {
     );
   }
 
-
   Widget _buildContent() {
-    return const SizedBox.shrink();
+    return GridView(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 15,
+      ),
+      children: List.generate(50, (i) => _buildRowItem(i)),
+    );
+  }
+
+  Widget _buildRowItem(int i) {
+    final nameItem = 'Item N${i + 1}';
+    final _rInt = _r.nextInt(0xFFFFFF);
+    final color = Color(0xFF000000 + _rInt);
+    return InkCustomSimple(
+      onTap: () {
+        _interactor.onOpenItem(nameItem, color);
+      },
+      child: Container(
+        alignment: Alignment.center,
+        decoration: DesignStyles.buttonDecoration(color: color),
+        child: Text(nameItem),
+      ),
+    );
   }
 }

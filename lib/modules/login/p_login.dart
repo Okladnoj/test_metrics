@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:test_metrics/modules/login/widgets/w_confirm.dart';
 
 import '../../../services/settings.dart';
@@ -60,6 +62,7 @@ class LoginPState extends State<LoginP> with ErrorHandlerState {
             _buildLogo(),
             _buildFieldName(),
             _buildFieldEmail(),
+            SizedBox(height: MediaQueryData.fromWindow(window).size.height / 2)
           ],
         );
       },
@@ -101,6 +104,9 @@ class LoginPState extends State<LoginP> with ErrorHandlerState {
     return AnimatedOpacity(
         duration: const Duration(seconds: 1),
         opacity: _isValid ? 1 : 0,
-        child: ConfirmButtonW(interactor: _interactor));
+        child: ConfirmButtonW(
+          interactor: _interactor,
+          enable: _isValid,
+        ));
   }
 }

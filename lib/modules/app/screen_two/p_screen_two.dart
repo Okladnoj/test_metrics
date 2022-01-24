@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:test_metrics/services/settings.dart';
 
 import 'i_screen_two.dart';
@@ -14,6 +16,7 @@ class ScreenTwoP extends StatefulWidget {
 
 class ScreenTwoPState extends State<ScreenTwoP> with ErrorHandlerState {
   ScreenTwoModelUI? _modelUI;
+  final _r = Random();
   late final ScreenTwoInteractor _interactor;
 
   @override
@@ -37,24 +40,45 @@ class ScreenTwoPState extends State<ScreenTwoP> with ErrorHandlerState {
         return ScreenFormer(
           streamLoadingStatus: _interactor.observerLoading,
           titleActions: _buildTitle(),
-          children: [
-            _buildContent(),
-            ScreenTwoW(interactor: _interactor),
-          ],
+          child: _buildContent(),
         );
       },
     );
   }
 
   Widget _buildTitle() {
-    return TitleForm(
-      nameTitle: Strings.text.emptyString,
+    return const TitleForm(
+      nameTitle: 'Screen Two',
       typeBackAction: TypeBackAction.close,
     );
   }
 
-
   Widget _buildContent() {
-    return const SizedBox.shrink();
+    return ListView(
+      children: List.generate(50, (i) => _buildRowItem(i)),
+    );
+  }
+
+  Widget _buildRowItem(int i) {
+    final nameItem = 'Item N${i + 1}';
+    final _rInt = _r.nextInt(0xFFFFFF);
+    final color = Color(0xFF000000 + _rInt);
+    return Container(
+      margin: const EdgeInsets.only(top: 5, right: 15, left: 15),
+      decoration: DesignStyles.buttonDecoration(color: color),
+      child: InkCustomSimple(
+        onTap: () {
+          _interactor.onOpenItem(nameItem, color);
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            children: [
+              Text(nameItem),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

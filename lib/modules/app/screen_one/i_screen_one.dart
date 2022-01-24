@@ -17,7 +17,7 @@ class ScreenOneInteractor with BaseInteractor<ScreenOneModelUI> {
 
   Future<void> _init() async {
     sinkLoading.add(true);
-    await _loadData();
+    // await _loadData();
     _updateUI();
     sinkLoading.add(false);
   }

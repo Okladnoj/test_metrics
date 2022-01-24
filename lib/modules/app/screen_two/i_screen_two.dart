@@ -1,3 +1,4 @@
+import 'package:test_metrics/modules/app/item/s_item.dart';
 import 'package:test_metrics/services/settings.dart';
 
 import 'domain/screen_two_api.dart';
@@ -17,7 +18,7 @@ class ScreenTwoInteractor with BaseInteractor<ScreenTwoModelUI> {
 
   Future<void> _init() async {
     sinkLoading.add(true);
-    await _loadData();
+    // await _loadData();
     _updateUI();
     sinkLoading.add(false);
   }
@@ -33,6 +34,10 @@ class ScreenTwoInteractor with BaseInteractor<ScreenTwoModelUI> {
     await _deps?.onSomeMethod();
   }
 
+  Future<void> onOpenItem(String nameItem, Color color) async {
+    await _depsItem?.onOpenItem(nameItem, color);
+  }
+
   void _updateUI() {
     sink.add(_mapToUI());
   }
@@ -43,6 +48,8 @@ class ScreenTwoInteractor with BaseInteractor<ScreenTwoModelUI> {
       );
 
   ScreenTwoListener? get _deps => _state.context.findAncestorStateOfType<ScreenTwoListener>();
+
+  ItemListener? get _depsItem => _state.context.findAncestorStateOfType<ItemListener>();
 
   @override
   Future<void> dispose() {

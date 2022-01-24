@@ -45,7 +45,19 @@ class HomePState extends State<HomeP> with ErrorHandlerState {
               _buildContent(),
               ButtonW(
                 title: 'To Screen One',
-                onTap: () {},
+                onTap: _interactor.onScreenOne,
+              ),
+              ButtonW(
+                title: 'To Screen Two',
+                onTap: _interactor.onScreenTwo,
+              ),
+              ButtonW(
+                title: 'To Screen Three',
+                onTap: _interactor.onScreenThree,
+              ),
+              ButtonW(
+                title: 'To Screen For',
+                onTap: _interactor.onScreenFor,
               ),
             ],
           );

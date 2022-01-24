@@ -1,6 +1,8 @@
 import '../../services/settings.dart';
 import 'home/p_home.dart';
 import 'home/s_home.dart';
+import 'item/p_item.dart';
+import 'item/s_item.dart';
 import 'screen_for/p_screen_for.dart';
 import 'screen_one/p_screen_one.dart';
 import 'screen_three/p_screen_three.dart';
@@ -16,7 +18,8 @@ class FollowControllerApp extends StatefulWidget {
 
 class _FollowControllerAppState extends BaseFlowControllerState<FollowControllerApp>
     implements //
-        HomeListener<FollowControllerApp> {
+        HomeListener<FollowControllerApp>,
+        ItemListener<FollowControllerApp> {
   @override
   @override
   AppPage createInitialPage() {
@@ -41,5 +44,10 @@ class _FollowControllerAppState extends BaseFlowControllerState<FollowController
   @override
   Future<R?> onScreenFor<R>() async {
     return pushSimple(() => const ScreenForP(), name: ScreenForP.id);
+  }
+
+  @override
+  Future<R?> onOpenItem<R>(String nameItem, Color color) async {
+    return pushSimple(() => ItemP(nameItem: nameItem, color: color), name: ItemP.id + ' ($nameItem)');
   }
 }

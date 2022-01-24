@@ -5,18 +5,21 @@ import '../i_login.dart';
 class ConfirmButtonW extends StatelessWidget {
   const ConfirmButtonW({
     Key? key,
+    required bool enable,
     required LoginInteractor interactor,
   })  : _interactor = interactor,
+        _enable = enable,
         super(key: key);
 
   final LoginInteractor _interactor;
+  final bool _enable;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       child: InkCustomSimple(
-        onTap: _interactor.signInWithEmail,
+        onTap: _enable ? _interactor.signInWithEmail : null,
         child: Container(
           alignment: const Alignment(0, 0),
           padding: const EdgeInsets.symmetric(vertical: 5),

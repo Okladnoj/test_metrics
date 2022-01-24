@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import '../services/settings.dart';
 
 import 'app/follow_app.dart';

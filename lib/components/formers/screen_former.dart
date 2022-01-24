@@ -67,29 +67,32 @@ class ScreenFormer extends StatelessWidget {
   }
 
   Widget _buildBodyList() {
+    final _children = children;
+    final _child = child;
     return ColoredBox(
       color: DesignStyles.colorLight,
       child: Column(
         children: [
           const SizedBox(height: _hightUpBar),
-          child ?? Container(),
-          Expanded(
-            child: onRefresh != null
-                ? RefreshIndicator(
-                    color: DesignStyles.colorDark,
-                    onRefresh: onRefresh ?? () async {},
-                    child: ListView(
+          if (_child != null) Expanded(child: _child),
+          if (_children != null)
+            Expanded(
+              child: onRefresh != null
+                  ? RefreshIndicator(
+                      color: DesignStyles.colorDark,
+                      onRefresh: onRefresh ?? () async {},
+                      child: ListView(
+                        physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+                        controller: controller,
+                        children: _children,
+                      ),
+                    )
+                  : ListView(
                       physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
                       controller: controller,
-                      children: children ?? [],
+                      children: _children,
                     ),
-                  )
-                : ListView(
-                    physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
-                    controller: controller,
-                    children: children ?? [],
-                  ),
-          ),
+            ),
         ],
       ),
     );

@@ -3,7 +3,7 @@ import 'dart:io';
 
 ///dart run wg.dart && flutter pub run build_runner build --delete-conflicting-outputs
 ///
-const nameModule = 'ScreenFor';
+const nameModule = 'Item1';
 const namePackage = 'test_metrics';
 const directory = 'lib/modules/app';
 

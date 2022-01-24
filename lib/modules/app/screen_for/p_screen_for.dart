@@ -2,7 +2,6 @@ import 'package:test_metrics/services/settings.dart';
 
 import 'i_screen_for.dart';
 import 'models/screen_for_model_ui.dart';
-import 'widgets/w_screen_for_title.dart';
 
 class ScreenForP extends StatefulWidget {
   static const id = 'ScreenForP';
@@ -39,7 +38,6 @@ class ScreenForPState extends State<ScreenForP> with ErrorHandlerState {
           titleActions: _buildTitle(),
           children: [
             _buildContent(),
-            ScreenForW(interactor: _interactor),
           ],
         );
       },
@@ -47,12 +45,11 @@ class ScreenForPState extends State<ScreenForP> with ErrorHandlerState {
   }
 
   Widget _buildTitle() {
-    return TitleForm(
-      nameTitle: Strings.text.emptyString,
+    return const TitleForm(
+      nameTitle: 'Screen For',
       typeBackAction: TypeBackAction.close,
     );
   }
-
 
   Widget _buildContent() {
     return const SizedBox.shrink();

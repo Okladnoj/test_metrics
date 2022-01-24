@@ -37,24 +37,23 @@ class ScreenOnePState extends State<ScreenOneP> with ErrorHandlerState {
         return ScreenFormer(
           streamLoadingStatus: _interactor.observerLoading,
           titleActions: _buildTitle(),
-          children: [
-            _buildContent(),
-            ScreenOneW(interactor: _interactor),
-          ],
+          child: _buildContent(),
         );
       },
     );
   }
 
   Widget _buildTitle() {
-    return TitleForm(
-      nameTitle: Strings.text.emptyString,
+    return const TitleForm(
+      nameTitle: 'One Screen',
       typeBackAction: TypeBackAction.close,
     );
   }
 
-
   Widget _buildContent() {
-    return const SizedBox.shrink();
+    return Container(
+      color: DesignStyles.red,
+      height: double.infinity,
+    );
   }
 }

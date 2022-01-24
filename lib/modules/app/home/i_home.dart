@@ -29,8 +29,20 @@ class HomeInteractor with BaseInteractor<HomeModelUI> {
     }
   }
 
-  Future<void> onSomeMethod() async {
+  Future<void> onScreenOne() async {
     await _deps?.onScreenOne();
+  }
+
+  Future<void> onScreenTwo() async {
+    await _deps?.onScreenTwo();
+  }
+
+  Future<void> onScreenThree() async {
+    await _deps?.onScreenThree();
+  }
+
+  Future<void> onScreenFor() async {
+    await _deps?.onScreenFor();
   }
 
   void _updateUI() {

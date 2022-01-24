@@ -11,7 +11,7 @@ class AppInit {
     Shake.setShowFloatingReportButton(true);
     Shake.setInvokeShakeOnShakeDeviceEvent(true);
     Shake.setInvokeShakeOnScreenshot(true);
-    Shake.setAutoVideoRecording(false);
+    Shake.setAutoVideoRecording(true);
     Shake.start(AppPreference.shakeClientID, AppPreference.shakeClientSecret);
     FlutterUxcam.optIntoSchematicRecordings(); // Confirm that you have user permission for screen recording
     FlutterUxcam.startWithKey("dkrdmk88xmdg6kj");
@@ -23,5 +23,9 @@ class AppInit {
     await Strings.loadFromLocal(Locale(lS));
     AppApi.init();
     DesignStyles.changeTheme(ThemesInit.type);
+
+    FlutterUxcam.setUserIdentity(AppPreference.user.email ?? '');
+    FlutterUxcam.setUserProperty('name', AppPreference.user.name ?? '');
+    FlutterUxcam.setUserProperty('email', AppPreference.user.email ?? '');
   }
 }
